@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cx21330d82bk6"]
 
-[ext_resource type="Script" path="res://mouse.gd" id="1_d03cw"]
+[ext_resource type="Script" uid="uid://cu4byis4ctxa7" path="res://scripts/mouse.gd" id="1_d03cw"]
 [ext_resource type="Texture2D" uid="uid://cabjq0w8esdc6" path="res://Sprites/MouseIdle.png" id="1_mk6pl"]
 [ext_resource type="Texture2D" uid="uid://7qc18vokkn6h" path="res://Sprites/MouseRun.png" id="2_q0m1r"]
 
@@ -98,7 +98,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 12.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1vir"]
@@ -110,8 +110,9 @@ script = ExtResource("1_d03cw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.703, 0.703)
 sprite_frames = SubResource("SpriteFrames_w5kmj")
-animation = &"idle"
-autoplay = "idle"
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.568741
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var RUN_SPEED = 40.0
 @export var run_radius = 100.0
 @onready var direction_timer: Timer = $DirectionTimer
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction = Vector2.ZERO
 var is_running = false
@@ -19,6 +20,10 @@ func _ready():
 	set_random_direction()
 
 func _physics_process(_delta):
+	if direction.x > 0:
+		animated_sprite.flip_h = false
+	elif direction.x < 0:
+		animated_sprite.flip_h = true
 	if player:
 		var distance_to_cat = global_position.distance_to(player.global_position)
 
