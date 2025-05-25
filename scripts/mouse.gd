@@ -1,7 +1,13 @@
 extends CharacterBody2D
 
+var stamina = 100.0
+var stamina_max = 100.0
+@export var stamina_drain_rate = 25.0
+@export var stamina_regen_rate = 5.0
+var can_sprint = true
+
 @export var SPEED = 25.0
-@export var RUN_SPEED = 40.0
+@export var RUN_SPEED = 60
 @export var run_radius = 100.0
 @onready var direction_timer: Timer = $DirectionTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -19,7 +25,7 @@ func _ready():
 	direction_timer.start()
 	set_random_direction()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if direction.x > 0:
 		animated_sprite.flip_h = false
 	elif direction.x < 0:
@@ -30,12 +36,25 @@ func _physics_process(_delta):
 		if distance_to_cat < run_radius:
 			is_running = true
 			direction = (global_position - player.global_position).normalized()
-			velocity = direction * RUN_SPEED
+			if can_sprint:
+				velocity = direction * RUN_SPEED
+				stamina -= stamina_drain_rate * delta
+				if stamina <= 0:
+					can_sprint = false # Blocking the ability to sprint
+			else:
+				velocity = direction * SPEED
+				stamina += stamina_regen_rate * delta
+				if stamina > stamina_drain_rate:
+					can_sprint = true # Unlocking the ability to sprint because the stamina is greater than stamina drain rate
 		else:
 			if is_running:
 				set_random_direction()
 				is_running = false
+			stamina += stamina_regen_rate * delta
 			velocity = direction * SPEED
+	stamina = clamp(stamina, 0, stamina_max)
+	print(stamina)
+			
 
 	move_and_slide()
 
