@@ -22,6 +22,7 @@ func _physics_process(delta):
 			sprint = 1
 			can_sprint = false  # Block the ability to sprint
 	else:
+		sprint = 1
 		stamina += stamina_regen_rate * delta
 		if stamina >= stamina_regen_rate:
 			can_sprint = true  # unlocking the ability sprint if stamina is greater than 10
