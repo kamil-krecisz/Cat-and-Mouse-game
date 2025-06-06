@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cx21330d82bk6"]
+[gd_scene load_steps=20 format=3 uid="uid://cx21330d82bk6"]
 
 [ext_resource type="Script" uid="uid://cu4byis4ctxa7" path="res://scripts/mouse.gd" id="1_d03cw"]
 [ext_resource type="Texture2D" uid="uid://cabjq0w8esdc6" path="res://Sprites/MouseIdle.png" id="1_mk6pl"]
 [ext_resource type="Texture2D" uid="uid://7qc18vokkn6h" path="res://Sprites/MouseRun.png" id="2_q0m1r"]
+[ext_resource type="Texture2D" uid="uid://bo7vvtt3xjbf0" path="res://Sprites/MouseDie.png" id="4_i4p24"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i80le"]
 atlas = ExtResource("1_mk6pl")
@@ -52,6 +53,10 @@ region = Rect2(0, 128, 32, 32)
 atlas = ExtResource("2_q0m1r")
 region = Rect2(0, 160, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_81ofm"]
+atlas = ExtResource("4_i4p24")
+region = Rect2(0, 128, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_w5kmj"]
 animations = [{
 "frames": [{
@@ -99,12 +104,22 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81ofm")
+}],
+"loop": true,
+"name": &"trapped",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1vir"]
 radius = 4.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Mouse", "mouse"]]
+collision_layer = 4
+input_pickable = true
 script = ExtResource("1_d03cw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -112,7 +127,6 @@ scale = Vector2(0.703, 0.703)
 sprite_frames = SubResource("SpriteFrames_w5kmj")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.568741
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

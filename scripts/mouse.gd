@@ -4,6 +4,7 @@ var stamina = 100.0
 var stamina_max = 100.0
 @export var stamina_drain_rate = 25.0
 @export var stamina_regen_rate = 5.0
+var can_move = true
 var can_sprint = true
 
 @export var SPEED = 25.0
@@ -26,6 +27,14 @@ func _ready():
 	set_random_direction()
 
 func _physics_process(delta):
+	if can_move == false:
+		RUN_SPEED = 0
+		SPEED = 0
+		animated_sprite.animation = "trapped"
+	elif can_move == true:
+		RUN_SPEED = 60
+		SPEED = 25
+		animated_sprite.animation = "run"
 	if direction.x > 0:
 		animated_sprite.flip_h = false
 	elif direction.x < 0:
@@ -53,7 +62,7 @@ func _physics_process(delta):
 			stamina += stamina_regen_rate * delta
 			velocity = direction * SPEED
 	stamina = clamp(stamina, 0, stamina_max)
-	print(stamina)
+	#print(stamina)
 			
 
 	move_and_slide()
