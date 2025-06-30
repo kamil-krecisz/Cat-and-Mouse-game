@@ -10,7 +10,7 @@ You control a cat moving around a cheese warehouse. Mice spawn and roam freely, 
 
 - Top-down cat movement (WASD + Shift for sprint)
 - Enemy AI: Mice flee when the cat gets close and seek cheese around the warehouse
-- Traps that slow down or capture mice
+- Traps that capture mice
 - Upgrade system (stamina, speed, etc.)
 - Points and money system based on caught mice, used to buy upgrades and traps
 
@@ -36,6 +36,6 @@ This game is an educational project and part of my portfolio for university admi
 ## 🚧 Planned Features
 
 - Cheese-eating animation and mechanics for mice  
-- Stamina system for both cat and mice  
-- UI menus and game over screen  
+- Stamina system for both cat and mice - DONE  
+- Pause menu and game over screen  
 - Sound effects and background music  
