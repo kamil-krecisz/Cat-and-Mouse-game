@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gra o kiciach"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="uid://0r5ojogprjw1"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

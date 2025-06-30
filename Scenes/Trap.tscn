@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ba7qoy6xh64iw"]
 
-[ext_resource type="Script" uid="uid://ko7khns27fon" path="res://Scenes/trap.gd" id="1_kcg2b"]
+[ext_resource type="Script" uid="uid://ko7khns27fon" path="res://scripts/trap.gd" id="1_kcg2b"]
 [ext_resource type="Texture2D" uid="uid://cpmtdd2ff6x5k" path="res://Sprites/MouseTrap.png" id="1_nkut1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nkut1"]
