@@ -37,5 +37,5 @@ This game is an educational project and part of my portfolio for university admi
 
 - Cheese-eating animation and mechanics for mice  
 - Stamina system for both cat and mice - DONE  
-- Pause menu and game over screen  
+- Pause menu - DONE  
 - Sound effects and background music  
