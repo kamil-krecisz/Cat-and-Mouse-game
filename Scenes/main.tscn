@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dew6xdhyxdtn2"]
+[gd_scene load_steps=12 format=3 uid="uid://dew6xdhyxdtn2"]
 
 [ext_resource type="Texture2D" uid="uid://d1ie58i4lxxqx" path="res://Tilesets/tileset.png" id="1_21xkr"]
 [ext_resource type="PackedScene" uid="uid://bq5scdpab1ddc" path="res://Scenes/kicia.tscn" id="2_6bp64"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bi8iqdwx3y5sp" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_hptm8"]
 [ext_resource type="PackedScene" uid="uid://cx21330d82bk6" path="res://Scenes/Mouse.tscn" id="6_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://ba7qoy6xh64iw" path="res://Scenes/Trap.tscn" id="7_6bp64"]
+[ext_resource type="PackedScene" uid="uid://cdmmkfsji1a0y" path="res://Scenes/pause_menu.tscn" id="8_344ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5cf0"]
 texture = ExtResource("1_21xkr")
@@ -89,3 +90,7 @@ input_pickable = false
 [node name="Trap" parent="." instance=ExtResource("7_6bp64")]
 position = Vector2(232, 262)
 collision_mask = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_344ge")]
