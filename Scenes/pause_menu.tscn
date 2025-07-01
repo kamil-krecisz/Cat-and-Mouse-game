@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdmmkfsji1a0y"]
+[gd_scene load_steps=11 format=3 uid="uid://cdmmkfsji1a0y"]
 
 [ext_resource type="Shader" uid="uid://5hxuvfnm2nsc" path="res://Shaders/pause_menu.gdshader" id="1_emv3i"]
 [ext_resource type="Script" uid="uid://si1yn14o5fc0" path="res://scripts/pause_menu.gd" id="1_k0w1u"]
+[ext_resource type="AudioStream" uid="uid://doj3fj1slf1pv" path="res://Sounds/ClickSound.wav" id="3_1och7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0w1u"]
 shader = ExtResource("1_emv3i")
 shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0w1u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1och7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpi0q"]
 
 [sub_resource type="Animation" id="Animation_bpi0q"]
 length = 0.001
@@ -110,22 +117,28 @@ alignment = 1
 [node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k0w1u")
 text = "Resume"
 
 [node name="MainMenu" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1och7")
 text = "Main menu"
 
 [node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bpi0q")
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_vmyb1")
 }
+
+[node name="ClickPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1och7")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
