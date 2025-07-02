@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 ## Movement Settings
 @export var walk_speed: float = 35.0
-@export var run_speed: float = 50.0
+@export var run_speed: float = 60.0
 @export var acceleration: float = 15.0
 
 ## Stamina Settings
@@ -31,7 +31,6 @@ var stamina: float = max_stamina
 func _ready():
 	nav_agent.path_desired_distance = 8.0
 	nav_agent.target_desired_distance = 8.0
-	#direction_timer.timeout.connect(_on_direction_timer_timeout)
 	direction_timer.start()
 	find_cheese()  # Immediately look for cheese on spawn
 
@@ -70,7 +69,7 @@ func _physics_process(delta):
 			if current_target:
 				nav_agent.target_position = current_target.global_position
 				if global_position.distance_to(current_target.global_position) < eat_range:
-					current_target.queue_free()
+					
 					find_cheese()
 		WANDER:
 			if nav_agent.is_navigation_finished():
@@ -82,7 +81,7 @@ func _physics_process(delta):
 		velocity = velocity.lerp(target_velocity, acceleration * delta)
 	
 	# Stamina regen when not sprinting
-	if current_state != FLEE or !can_sprint:
+	if !can_sprint:
 		stamina = min(stamina + stamina_regen * delta, max_stamina)
 		if stamina > stamina_drain * 1.5:
 			can_sprint = true

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cxn56k2833omi" path="res://scripts/cheese.gd" id="1_oc2e5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c315j"]
-radius = 13.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oc2e5"]
 radius = 3.0
@@ -16,7 +16,7 @@ script = ExtResource("1_oc2e5")
 scale = Vector2(0.703, 0.703)
 texture = ExtResource("1_c315j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="DetectionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_c315j")
 one_way_collision_margin = 0.0
 
@@ -26,4 +26,8 @@ one_way_collision_margin = 0.0
 shape = SubResource("CircleShape2D_oc2e5")
 debug_color = Color(0.727243, 0, 0.243122, 0.42)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

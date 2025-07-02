@@ -133,7 +133,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_l1vir")
 
 [node name="DirectionTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.5
 autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

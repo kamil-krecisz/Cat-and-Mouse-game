@@ -194,7 +194,7 @@ position = Vector2(285, 219)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(285, 219)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(3.5, 3.5)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -207,7 +207,7 @@ position = Vector2(285, 219)
 script = ExtResource("4_ynf5e")
 follow_mode = 5
 follow_target = NodePath("../MainKICIA")
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(3.5, 3.5)
 tween_resource = SubResource("Resource_ffwdd")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
