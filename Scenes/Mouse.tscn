@@ -136,4 +136,7 @@ shape = SubResource("CircleShape2D_l1vir")
 wait_time = 5.0
 autostart = true
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
