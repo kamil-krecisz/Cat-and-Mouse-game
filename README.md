@@ -19,7 +19,7 @@ You control a cat moving around a cheese warehouse. Mice spawn and roam freely, 
 - Mice move randomly when idle
 - When within detection radius, they flee from the cat (player)
 - Direction changes periodically via timer
-- Cheese detection and pathfinding (to be implemented)
+- Cheese detection and pathfinding - IMPLEMENTED
 
 ## 🧰 Technologies Used
 
@@ -35,7 +35,8 @@ This game is an educational project and part of my portfolio for university admi
 
 ## 🚧 Planned Features
 
-- Cheese-eating animation and mechanics for mice  
+- Cheese-eating animation for mice
+- Cheese-eating mechanics for mice - DONE 
 - Stamina system for both cat and mice - DONE  
 - Pause menu - DONE  
 - Sound effects and background music  
