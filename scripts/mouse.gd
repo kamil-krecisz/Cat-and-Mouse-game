@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var cheese = get_tree().get_first_node_in_group("Cheese")
 var stamina = 100.0
 var stamina_max = 100.0
 @export var stamina_drain_rate = 25.0
@@ -27,6 +28,9 @@ func _ready():
 	set_random_direction()
 
 func _physics_process(delta):
+	if not is_running and cheese:
+		direction = (cheese.global_position - global_position).normalized()
+		velocity = direction * SPEED
 	if can_move == false:
 		RUN_SPEED = 0
 		SPEED = 0

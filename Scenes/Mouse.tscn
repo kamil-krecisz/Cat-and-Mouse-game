@@ -118,7 +118,7 @@ animations = [{
 radius = 4.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Mouse", "mouse"]]
-collision_layer = 4
+collision_layer = 5
 input_pickable = true
 script = ExtResource("1_d03cw")
 
