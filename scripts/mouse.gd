@@ -13,7 +13,7 @@ extends CharacterBody2D
 ## Detection Ranges
 @export var flee_range: float = 75.0
 @export var cheese_detect_range: float = 350.0
-@export var eat_range: float = 15.0
+@export var eat_range: float = 12.0
 
 ## Nodes
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
@@ -69,8 +69,10 @@ func _physics_process(delta):
 			if current_target:
 				nav_agent.target_position = current_target.global_position
 				if global_position.distance_to(current_target.global_position) < eat_range:
-					
-					find_cheese()
+					$EatingTimer.start()
+					can_move = false
+					#current_target.queue_free()
+					#find_cheese()
 		WANDER:
 			if nav_agent.is_navigation_finished():
 				set_random_target()
@@ -128,3 +130,9 @@ func _on_direction_timer_timeout():
 		set_random_target()
 	elif current_state == CHASE:
 		find_cheese()  # Re-check for closer cheese periodically
+
+
+func _on_eating_timer_timeout():
+	if current_target:
+		current_target.queue_free()
+	can_move = true
