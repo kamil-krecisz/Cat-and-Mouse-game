@@ -5,8 +5,8 @@ extends Control
 
 
 #SETTINGS BUTTONS
-@onready var resolution_option: OptionButton = $CanvasLayer/Panel/ResolutionOption
-@onready var window_mode: OptionButton = $CanvasLayer/Panel/WindowMode
+@onready var resolution_option: OptionButton = $CanvasLayer/Panel/VBoxContainer/ResolutionOption
+@onready var window_mode: OptionButton = $CanvasLayer/Panel/VBoxContainer/WindowMode
 @onready var apply_button: Button = $CanvasLayer/Panel/ApplyButton
 
 
@@ -46,11 +46,7 @@ func _on_start_pressed():
 
 
 func _on_settings_pressed():
-	click_player.play()
-	if settings_canvas.visible == true:
-		return
-	settings_canvas.visible = true
-	AniPlayer.play("settings_animation")
+	show_settings()
 
 
 func _on_exit_pressed():
@@ -60,10 +56,7 @@ func _on_exit_pressed():
 
 
 func _on_closing_button_pressed():
-	click_player.play()
-	AniPlayer.play_backwards("settings_animation")
-	await get_tree().create_timer(0.2).timeout
-	settings_canvas.visible = false
+	hide_settings()
 
 
 func _on_apply_button_pressed():
@@ -78,3 +71,18 @@ func _on_apply_button_pressed():
 	config.set_value("display", "resolution", res)
 	config.set_value("display", "mode", mode)
 	config.save("user://settings.cfg")
+	
+	
+func show_settings():
+	click_player.play()
+	if settings_canvas.visible == true:
+		hide_settings()
+		return
+	settings_canvas.visible = true
+	AniPlayer.play("settings_animation")
+	
+func hide_settings():
+	click_player.play()
+	AniPlayer.play_backwards("settings_animation")
+	await get_tree().create_timer(0.2).timeout
+	settings_canvas.visible = false
