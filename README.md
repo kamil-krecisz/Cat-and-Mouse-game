@@ -23,7 +23,7 @@ You control a cat moving around a cheese warehouse. Mice spawn and roam freely, 
 
 ## 🧰 Technologies Used
 
-- **Engine:** Godot 4.4.1
+- **Engine:** Godot 4.5
 - **Language:** GDScript
 - **Graphics:** 2D pixel art
 - **Version control:** Git + GitHub
