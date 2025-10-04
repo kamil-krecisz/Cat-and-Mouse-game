@@ -44,3 +44,17 @@ func _on_exit_pressed():
 
 func _process(_delta):
 	Esc()
+
+
+func _on_shop_pressed():
+	show_shop()
+	
+func show_shop():
+	click_player.play()
+	if $Panel.visible == true:
+		animation.play_backwards("open_shop")
+		await get_tree().create_timer(0.3).timeout
+		$Panel.visible = false
+		return
+	$Panel.visible = true
+	animation.play("open_shop")
