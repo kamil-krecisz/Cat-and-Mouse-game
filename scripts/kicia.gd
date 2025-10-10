@@ -6,7 +6,7 @@ var stamina_max = 100.0
 @export var stamina_drain_rate = 20.0
 @export var stamina_regen_rate = 10.0
 
-
+var UPGRADE_SPEED = 1
 @export var SPEED = 55.0
 var can_sprint = true
 var sprint = 1.0
@@ -46,7 +46,7 @@ func _physics_process(delta):
 		elif character_direction.y > 0:
 			animated_sprite.animation = "walking_down"
 		character_direction = character_direction.normalized()
-		velocity = character_direction * SPEED * sprint
+		velocity = character_direction * SPEED * sprint * UPGRADE_SPEED
 	else:
 		animated_sprite.animation = "idle"
 		velocity = velocity.lerp(Vector2.ZERO, DECELERATION * delta)

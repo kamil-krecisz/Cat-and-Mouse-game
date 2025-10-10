@@ -1,6 +1,10 @@
 extends Control
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var click_player: AudioStreamPlayer2D = $ClickPlayer
+@onready var Player = get_tree().get_first_node_in_group("Player")
+@onready var label = get_tree().get_first_node_in_group("Label")
+
+@export var price = 10
 
 func _ready():
 	$PanelContainer/VBoxContainer/Exit.disabled = true
@@ -58,3 +62,10 @@ func show_shop():
 		return
 	$Panel.visible = true
 	animation.play("open_shop")
+
+
+func _on_speed_upgrade_pressed():
+	if Player and label.points >= price:
+		Player.UPGRADE_SPEED += 0.1
+		label.points -= price
+		print(Player.UPGRADE_SPEED)
