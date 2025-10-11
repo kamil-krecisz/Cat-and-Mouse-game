@@ -15,6 +15,7 @@ func resume():
 	$PanelContainer/VBoxContainer/Exit.disabled = true
 	$PanelContainer/VBoxContainer/Resume.disabled = true
 	$PanelContainer/VBoxContainer/MainMenu.disabled = true
+	$Shop.disabled = true
 	get_tree().paused = false
 	animation.play_backwards("blur")
 	
@@ -22,6 +23,7 @@ func pause():
 	$PanelContainer/VBoxContainer/Exit.disabled = false
 	$PanelContainer/VBoxContainer/Resume.disabled = false
 	$PanelContainer/VBoxContainer/MainMenu.disabled = false
+	$Shop.disabled = false
 	get_tree().paused = true
 	animation.play("blur")
 	

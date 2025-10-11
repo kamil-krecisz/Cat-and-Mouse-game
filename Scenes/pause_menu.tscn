@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdmmkfsji1a0y"]
+[gd_scene load_steps=16 format=3 uid="uid://cdmmkfsji1a0y"]
 
 [ext_resource type="Shader" uid="uid://5hxuvfnm2nsc" path="res://Shaders/pause_menu.gdshader" id="1_emv3i"]
 [ext_resource type="Script" uid="uid://si1yn14o5fc0" path="res://scripts/pause_menu.gd" id="1_k0w1u"]
 [ext_resource type="AudioStream" uid="uid://doj3fj1slf1pv" path="res://Sounds/ClickSound.wav" id="3_1och7"]
+[ext_resource type="FontFile" uid="uid://cvienmopbysfc" path="res://fonts/GrapeSoda.ttf" id="4_bpi0q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0w1u"]
 shader = ExtResource("1_emv3i")
@@ -189,19 +190,22 @@ alignment = 1
 
 [node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
+theme_override_fonts/font = ExtResource("4_bpi0q")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_k0w1u")
 text = "Resume"
 
 [node name="MainMenu" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
+theme_override_fonts/font = ExtResource("4_bpi0q")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1och7")
 text = "Main menu"
 
 [node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
+theme_override_fonts/font = ExtResource("4_bpi0q")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bpi0q")
 text = "Exit"
 
@@ -220,12 +224,14 @@ offset_left = 1146.0
 offset_top = 23.0
 offset_right = 1251.0
 offset_bottom = 81.0
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("4_bpi0q")
+theme_override_font_sizes/font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_myy0f")
 text = "SHOP
 "
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 892.0
 offset_top = 109.0
@@ -235,14 +241,25 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1och7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 15.0
-offset_right = 335.0
-offset_bottom = 555.0
+offset_left = 30.0
+offset_top = 16.0
+offset_right = 328.0
+offset_bottom = 558.0
 
-[node name="SpeedUpgrade" type="Button" parent="Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_bpi0q")
+theme_override_font_sizes/font_size = 40
+text = "Speed - 10"
+
+[node name="SpeedUpgrade" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_bpi0q")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vmyb1")
 text = "Upgrade"
 
@@ -250,4 +267,4 @@ text = "Upgrade"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Shop" to="." method="_on_shop_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/SpeedUpgrade" to="." method="_on_speed_upgrade_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/SpeedUpgrade" to="." method="_on_speed_upgrade_pressed"]
